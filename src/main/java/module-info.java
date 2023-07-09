@@ -1,4 +1,5 @@
 module com.example.comp333_con {
+    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
             
