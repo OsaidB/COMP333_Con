@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+    <center>
+        <AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="c_styles.css" stylesheets="@../c_styles.css" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="181.0" layoutY="194.0" prefHeight="21.0" prefWidth="69.0" text="Username">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <Label layoutX="184.0" layoutY="266.0" text="Password">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="TF_username" layoutX="303.0" layoutY="187.0" prefHeight="33.0" prefWidth="122.0" promptText="username" />
+                <PasswordField fx:id="TF_password" layoutX="303.0" layoutY="259.0" prefHeight="34.0" prefWidth="122.0" promptText="password" />
+                <Button fx:id="BTN_login" layoutX="178.0" layoutY="331.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="250.0" styleClass="enabled-button" text="Login" />
+                <Button fx:id="BTN_exit" layoutX="385.0" layoutY="474.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="170.0" styleClass="exit-button" text="Exit" />
+                <Label fx:id="LBL_msg" layoutX="245.0" layoutY="419.0" styleClass="note-label" text="" textAlignment="CENTER" />
+            <Label fx:id="showUserNameLabel" alignment="CENTER" layoutX="71.0" layoutY="507.0" prefHeight="40.0" prefWidth="170.0" text="Status" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="connectButton" layoutX="71.0" layoutY="474.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="40.0" prefWidth="170.0" text="connect" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

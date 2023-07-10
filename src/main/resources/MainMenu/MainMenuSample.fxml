@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" stylesheets="@../c_styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.MainMenuController">
+   <center>
+      <AnchorPane prefHeight="700.0" prefWidth="686.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="118.0" prefWidth="498.0" text="Butcher Shop" textAlignment="CENTER" textFill="#32a2b0">
+                     <font>
+                        <Font name="Rockwell Condensed Bold" size="96.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="BTN_manage" layoutX="225.0" layoutY="238.0" mnemonicParsing="false" onAction="#manage" prefHeight="42.0" prefWidth="150.0" styleClass="enabled-button" text="Manage" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+            <Line endX="300.0" layoutX="301.0" layoutY="343.0" startX="-300.0" styleClass="line" />
+            <Button layoutX="465.0" layoutY="648.0" mnemonicParsing="false" onAction="#logOut" prefHeight="33.0" prefWidth="110.0" styleClass="exit-button" text="Log Out" />
+            <Button fx:id="BTN_buySell" layoutX="377.0" layoutY="410.0" mnemonicParsing="false" onAction="#toOrderWindow" prefHeight="42.0" prefWidth="150.0" styleClass="enabled-button" text="BUY/RETURN" AnchorPane.bottomAnchor="247.60000000000002" AnchorPane.leftAnchor="377.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="410.0" />
+            <Button fx:id="BTN_manageOrders" layoutX="73.0" layoutY="410.0" mnemonicParsing="false" onAction="#toManageOrdersWindow" prefHeight="42.0" prefWidth="150.0" styleClass="enabled-button" text="Manage Orders" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="377.0" />
+            <Line endX="300.0" layoutX="301.0" layoutY="521.0" startX="-300.0" styleClass="line" />
+            <Button fx:id="BTN_statistics" layoutX="225.0" layoutY="569.0" mnemonicParsing="false" onAction="#toStatistics" prefHeight="42.0" prefWidth="210.0" styleClass="enabled-button" text="Statistics" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+            <Button fx:id="BTN_mngUsers" layoutX="377.0" layoutY="410.0" mnemonicParsing="false" onAction="#manageUsers" styleClass="enabled-button" text="Manage Users" AnchorPane.bottomAnchor="247.60000000000002" AnchorPane.leftAnchor="377.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="410.0" />
+            <Label layoutX="52.0" layoutY="71.0" prefHeight="118.0" prefWidth="498.0" text="Management System" textAlignment="CENTER" textFill="#32a2b0">
+               <font>
+                  <Font name="Rockwell Condensed" size="58.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
