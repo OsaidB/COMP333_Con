@@ -88,6 +88,22 @@ CREATE TABLE Supplier (
 );
 ALTER TABLE Supplier AUTO_INCREMENT = 100;
 
+CREATE TABLE Supplier_Type (
+	sID INT NOT NULL,
+    tID INT NOT NULL,
+    
+    CONSTRAINT SupTypKEY PRIMARY KEY (sID, tID)
+);
+
+#Insert Supplier_Type
+INSERT Supplier_Type (sID, tID) VALUE
+	(100, 10),
+	(100, 11),
+	(100, 12),
+	(101, 13),
+	(101, 14),
+	(101, 15),
+	(102, 16);
 
 
 CREATE TABLE Item (
@@ -108,6 +124,9 @@ CREATE TABLE Item (
 	FOREIGN KEY (SupplierID) REFERENCES Supplier(ID)
 			ON UPDATE CASCADE ON DELETE SET NULL
 );
+
+
+
 ALTER TABLE Item AUTO_INCREMENT = 100000;
 ###|||||||||||||||||||||||
 INSERT INTO ItemType (tName, tDescription) VALUES
