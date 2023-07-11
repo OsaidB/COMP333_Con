@@ -19,13 +19,13 @@ module com.example.comp333_con {
     opens Orders to javafx.fxml, javafx.controls;
     exports Orders;
 
-//    opens ManageUsers to javafx.fxml, javafx.controls;
-//    exports ManageUsers;
-//
-//    opens OrdersHistory to javafx.fxml, javafx.controls;
-//    exports OrdersHistory;
-//
-//    opens Statistics to javafx.fxml, javafx.controls;
-//    exports Statistics;
+    opens OrdersHistory to javafx.fxml, javafx.controls;
+    exports OrdersHistory;
+
+    opens ManageUsers to javafx.fxml, javafx.controls;
+    exports ManageUsers;
+
+    opens Statistics to javafx.fxml, javafx.controls;
+    exports Statistics;
 
 }

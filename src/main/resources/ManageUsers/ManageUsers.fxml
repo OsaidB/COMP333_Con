@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageUsers.ManageUsers">
+   <children>
+      <TableView fx:id="table" layoutX="210.0" layoutY="55.0" onKeyTyped="#getSelectedUserOnKey" onMouseClicked="#getSelectedUserOnMouse" prefHeight="324.0" prefWidth="480.0" tableMenuButtonVisible="true">
+        <columns>
+          <TableColumn fx:id="CLM_username" prefWidth="191.99999392032623" text="Username" />
+          <TableColumn fx:id="CLM_password" prefWidth="148.80001831054688" text="Password" />
+            <TableColumn fx:id="CLM_name" prefWidth="122.39996337890625" text="Employee Name" />
+        </columns>
+      </TableView>
+      <Label layoutX="324.0" layoutY="26.0" text="The username of employees is same as there ID" />
+      <TextField fx:id="TF_username" layoutX="210.0" layoutY="588.0" onKeyTyped="#onlyInteger" />
+      <Label layoutX="210.0" layoutY="571.0" text="Employee ID" />
+      <TextField fx:id="TF_tblPassword" layoutX="210.0" layoutY="405.0" />
+      <Label layoutX="210.0" layoutY="388.0" text="Password" />
+      <Button layoutX="420.0" layoutY="405.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="26.0" prefWidth="103.0" styleClass="enabled-button" text="Update" />
+      <Button layoutX="586.0" layoutY="405.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="103.0" styleClass="enabled-button" text="Delete User" />
+      <Button layoutX="586.0" layoutY="587.0" mnemonicParsing="false" onAction="#addUser" prefHeight="26.0" prefWidth="103.0" styleClass="enabled-button" text="Add User" />
+      <Button layoutX="14.0" layoutY="661.0" mnemonicParsing="false" onAction="#goBack" styleClass="exit-button" text="Back" />
+      <TextField fx:id="TF_password" layoutX="399.0" layoutY="588.0" />
+      <Label layoutX="400.0" layoutY="571.0" text="Password" />
+   </children>
+</AnchorPane>

@@ -5,8 +5,13 @@ import Manage.Employee;
 import Manage.Item;
 import Manage.Supplier;
 import Orders.CartItem;
+import OrdersHistory.OrderHistory;
+import ManageUsers.User;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -311,6 +316,106 @@ public class Driver {
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////smth.smth
+    ///////////////////////////////////////////////////////////////////////////////OrdersHistory.OrdersHistoryController
+    public static ObservableList<OrderHistory> getOrderHistory() throws SQLException {
+        ObservableList<OrderHistory> list = FXCollections.observableArrayList();
+
+        String STR = "SELECT O.DateAndTime, CONCAT(I.ModelNumber) AS Item, D.Price, D.Quantity, C.cName, E.eName " + "FROM OrderDetails D, Orders O, Item I, Customer C, Employee E "
+                + "WHERE D.oID = O.ID AND D.iID = I.ID AND O.CID = C.ID AND O.eID = E.ID";
+        Statement STT = con.createStatement();
+        ResultSet RS = STT.executeQuery(STR);
+
+        while (RS.next())
+            list.add(new OrderHistory(RS.getString(1), RS.getString(2), RS.getDouble(3), RS.getInt(4), RS.getString(5), RS.getString(6)));
+
+        return list;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////Statistics.StatisticsController
+
+    public static double[] getProfitAndSales(String start, String end) throws SQLException {
+        double[] array = new double[2];
+
+        String STR_sales = String.format("SELECT SUM(D.Price*D.Quantity) AS SUM FROM OrderDetails D, Orders O WHERE D.oID = O.ID AND DateAndTime BETWEEN '%s' AND '%s'", start, end);
+        Statement STT_sales = con.createStatement();
+        ResultSet RS_sales = STT_sales.executeQuery(STR_sales);
+        RS_sales.next();
+        array[0] = RS_sales.getDouble(1);
+
+        String STR_profit = String.format(
+                "SELECT SUM((D.Price-I.PurchasePrice)*D.Quantity) AS SUM FROM OrderDetails D, Orders O, Item I WHERE D.oID = O.ID AND I.ID = D.iID AND DateAndTime BETWEEN '%s' AND '%s'", start, end);
+        Statement STT_profit = con.createStatement();
+        ResultSet RS_profit = STT_profit.executeQuery(STR_profit);
+        RS_profit.next();
+        array[1] = RS_profit.getDouble(1);
+
+        return array;
+    }
+
+    public static ObservableList<PieChart.Data> getPieChartSoldData() throws SQLException {
+        ObservableList<PieChart.Data> list = FXCollections.observableArrayList();
+
+        String STR = "SELECT T.tName, Count(*) FROM Item I, ItemType T, OrderDetails D WHERE I.ItemType = T.ID AND D.iID = I.ID GROUP BY (T.tName)";
+        Statement STT = con.createStatement();
+        ResultSet RS = STT.executeQuery(STR);
+
+        while (RS.next())
+            list.add(new PieChart.Data(RS.getString(1), RS.getInt(2)));
+
+        return list;
+    }
+
+    public static ObservableList<PieChart.Data> getPieChartAllData() throws SQLException {
+        ObservableList<PieChart.Data> list = FXCollections.observableArrayList();
+
+        String STR = "SELECT T.tName, Count(*) FROM Item I, ItemType T WHERE I.ItemType = T.ID GROUP BY (T.tName)";
+        Statement STT = con.createStatement();
+        ResultSet RS = STT.executeQuery(STR);
+
+        while (RS.next())
+            list.add(new PieChart.Data(RS.getString(1), RS.getInt(2)));
+
+        return list;
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////ManageUsers.ManageUsersController
+
+    public static ObservableList<User> getUsersFromDatabase() throws SQLException {
+        ObservableList<User> list = FXCollections.observableArrayList();
+
+//		String STR_admins = "SELECT * FROM SystemUsers";
+//		Statement STT_admins = con.createStatement();
+//		ResultSet RS_admins = STT_admins.executeQuery(STR_admins);
+//
+//		while (RS_admins.next())
+//			list.add(new User(RS_admins.getString(3), RS_admins.getString(1), RS_admins.getString(2), "Admin"));
+//
+        String STR_employees = "SELECT E.eName, U.eID, U.uPassword FROM Employee E, EmployeeUsers U WHERE U.eID = E.ID";
+        Statement STT_employees = con.createStatement();
+        ResultSet RS_employees = STT_employees.executeQuery(STR_employees);
+
+        while (RS_employees.next())
+            list.add(new User(RS_employees.getString(1), RS_employees.getInt(2), RS_employees.getString(3)));
+
+        return list;
+    }
+
+    public static void updateEmployeeUser(int id, String newPassword) throws SQLException {
+        String STR = String.format("UPDATE EmployeeUsers SET uPassword = '%s' WHERE eID = %d", newPassword, id);
+        Statement STT = con.createStatement();
+        STT.execute(STR);
+    }
+
+    public static void deleteEmployeeUser(int id) throws SQLException {
+        String STR = "DELETE FROM EmployeeUsers WHERE eID = " + id;
+        Statement STT = con.createStatement();
+        STT.execute(STR);
+    }
+
+    public static void addEmployeeUser(int id, String password) throws SQLException {
+        String STR = String.format("INSERT INTO EmployeeUsers(eID, uPassword) VALUE (%d, '%s')", id, password);
+        Statement STT = con.createStatement();
+        STT.execute(STR);
+    }
 
 }
