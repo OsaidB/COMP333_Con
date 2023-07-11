@@ -12,4 +12,20 @@ module com.example.comp333_con {
 
     opens MainMenu to javafx.fxml, javafx.controls;
     exports MainMenu;
+
+    opens Manage to javafx.fxml, javafx.controls;
+    exports Manage;
+
+    opens Orders to javafx.fxml, javafx.controls;
+    exports Orders;
+
+//    opens ManageUsers to javafx.fxml, javafx.controls;
+//    exports ManageUsers;
+//
+//    opens OrdersHistory to javafx.fxml, javafx.controls;
+//    exports OrdersHistory;
+//
+//    opens Statistics to javafx.fxml, javafx.controls;
+//    exports Statistics;
+
 }

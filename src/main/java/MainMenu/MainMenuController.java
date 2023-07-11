@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 //import Manage.ManageController;
 import FirstPack.Main;
+import Manage.ManageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,11 +52,13 @@ public class MainMenuController implements Initializable {
         }
     }
 
-    public void logOut(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Login/loginSample.fxml"));
 
-//			Scene scene = new Scene(root, 600, 600);
+    public void manage(ActionEvent event) {
+
+        try {
+            Manage.ManageController.fromMainMenu();
+            Parent root = FXMLLoader.load(getClass().getResource("/Manage/Manage.fxml"));
+
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 
@@ -67,51 +70,12 @@ public class MainMenuController implements Initializable {
         }
     }
 
-    public void toOrderWindow(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Orders/Orders.fxml"));
-            Scene scene = new Scene(root, 900, 800);
-            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
-            Main.stage.setScene(scene);
-
-        } catch (IOException e) {
-//			e.printStackTrace();
-            showErrorMessage(e.getMessage());
-        }
-    }
-
-    public void toManageOrdersWindow(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/OrdersHistory/OrdersHistory.fxml"));
-            Scene scene = new Scene(root, 900, 800);
-            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
-            Main.stage.setScene(scene);
-
-        } catch (IOException e) {
-//			e.printStackTrace();
-            showErrorMessage(e.getMessage());
-        }
-    }
-
-    public void toStatistics(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Statistics/Statistics.fxml"));
-            Scene scene = new Scene(root, 900, 700);
-            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
-            Main.stage.setScene(scene);
-
-        } catch (IOException e) {
-//			e.printStackTrace();
-            showErrorMessage(e.getMessage());
-        }
-    }
-
     public void manageUsers(ActionEvent event) {
         try {
-//			ManageController.fromMainMenu();
+			ManageController.fromMainMenu();
             Parent root = FXMLLoader.load(getClass().getResource("/ManageUsers/ManageUsers.fxml"));
 
-            Scene scene = new Scene(root, 900, 700);
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 
             Main.stage.setScene(scene);
@@ -122,12 +86,52 @@ public class MainMenuController implements Initializable {
         }
     }
 
-    public void manage(ActionEvent event) {
-        try {
-//			ManageController.fromMainMenu();
-            Parent root = FXMLLoader.load(getClass().getResource("/Manage/Manage.fxml"));
+//////////////////////////////////////////////////////////////////////////////////
 
-            Scene scene = new Scene(root, 900, 700);
+    public void toOrderWindow(ActionEvent event) {//BUY AND SELL BUTTON             //NOT ADMIN ORDERS!!
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Orders/Orders.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+            Main.stage.setScene(scene);
+
+        } catch (IOException e) {
+//			e.printStackTrace();
+            showErrorMessage(e.getMessage());
+        }
+    }
+
+    public void ManageOrdersBut(ActionEvent event) {                                //ADMIN ORDERS!!
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/OrdersHistory/OrdersHistory.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+            Main.stage.setScene(scene);
+
+        } catch (IOException e) {
+//			e.printStackTrace();
+            showErrorMessage(e.getMessage());
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void statisticsBut(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Statistics/Statistics.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+            Main.stage.setScene(scene);
+
+        } catch (IOException e) {
+//			e.printStackTrace();
+            showErrorMessage(e.getMessage());
+        }
+    }
+
+    public void logOut(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Login/loginSample.fxml"));
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 
             Main.stage.setScene(scene);
