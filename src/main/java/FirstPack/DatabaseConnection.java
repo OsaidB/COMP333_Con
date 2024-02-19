@@ -7,7 +7,7 @@ public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection() {
-        String databaseName = "COMP333_Con_Base";
+        String databaseName = "osaidBase";
         String databaseUser = "root";
         String databasePassword = "0518";
         String url = "jdbc:mysql://localhost/" + databaseName;

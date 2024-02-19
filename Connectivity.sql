@@ -1,8 +1,8 @@
-use COMP333_Con_Base;
+use osaidBase;
 
 drop database COMP333_Con_Base;
 
-create database COMP333_Con_Base;
+create database osaidBase;
 
 DROP TABLE useraccount;
 
@@ -40,9 +40,11 @@ CREATE TABLE Employee (
     StartDate DATE DEFAULT (now()),
     EndDate DATE,
     Address VARCHAR(128),
-    
 	PRIMARY KEY (ID)
 );
+#Alter table Employee modify ID int AUTO_INCREMENT=1;
+ALTER TABLE Employee AUTO_INCREMENT = 1;
+
 
 CREATE TABLE EmployeeUsers (
 	eID INT,
@@ -52,6 +54,9 @@ CREATE TABLE EmployeeUsers (
     FOREIGN KEY (eID) REFERENCES Employee(ID)
 			ON UPDATE CASCADE ON DELETE CASCADE
 );
+ALTER TABLE EmployeeUsers AUTO_INCREMENT = 1;
+#Alter table EmployeeUsers modify eID int AUTO_INCREMENT;
+
 ###|||||||||||||||||||||||
 INSERT INTO Employee (eName, SSN, Phone, Salary, Address) VALUES
 	('Mohammed Anan', 406696325, 595654321, 1500.0, 'Jenin'),
@@ -142,11 +147,15 @@ INSERT INTO ItemType (tName, tDescription) VALUES
 	('abdullah', 999999999, 'wear.abdullah.net', 'Imported Meat', 'Turky');
     
 INSERT INTO Item(ModelNumber, PurchasePrice, SellingPrice,Quantity,  SupplierID,ItemType) VALUES
-	('12-MDL-9943', 120.0, 290.99, 160, 102, 'OneSize', 'BLACK', 5),
-	('12-MDL-9943', 120.0, 290.99, 160, 102, 'OneSize', 'RED', 5),
-	('12-MDL-9943', 120.0, 290.99, 160, 102, 'OneSize', 'GREEN', 4),
-	('12-MDL-9943', 120.0, 290.99, 160, 102, 'OneSize', 'WHITE', 2),
-	('12-MDL-9943', 120.0, 290.99, 160, 102, 'OneSize', 'YELLO', 1);
+	('9943', 120.0, 290.99, 160, 1, 3),
+	('9922', 120.0, 290.99, 160, 3, 5),
+	('9933', 120.0, 290.99, 160, 3, 4),
+	('9944', 120.0, 290.99, 160, 1, 2),
+	('9988', 120.0, 290.99, 160, 2, 1);
+    
+    select * from Supplier;
+    select * from Item;
+
 #########################################################################################################################################################
 CREATE TABLE Customer (
 	ID BIGINT AUTO_INCREMENT,
@@ -216,19 +225,24 @@ ALTER TABLE OrderDetails AUTO_INCREMENT = 100000;
     ###|||||||||||||||||||||||
     #Insert Orders With Details
 INSERT INTO Orders (cID, eID) VALUES
-	(10000, 1),
-	(10004, 1),
-	(10005, 1),
-	(10004, 2),
-	(10004, 3),
-	(10000, 2);
+	(100000, 1),
+	(100004, 1),
+	(100005, 1),
+	(100004, 2),
+	(100004, 3);
+	#(100000, 2);
 
-#INSERT INTO OrderDetails (oID, iID, Price, Quantity) VALUES
-#	(100000, 100000, 175, 1),
-#	(100001, 100002, 160, 2),
-#	(100002, 100010, 100, 1),
-#	(100003, 100015, 25, 4),
-#	(100004, 100014, 90, 1),
-#	(100005, 100019, 30, 1);
+select * from Orders;
+
+
+INSERT INTO OrderDetails (oID, iID, Price, Quantity) VALUES
+	(100000, 100000, 175, 1),
+	(100001, 100002, 160, 2),
+	(100002, 100010, 100, 1),
+	(100003, 100015, 25, 4),
+	(100004, 100014, 90, 1),
+	(100005, 100019, 30, 1);
     
+    select * from OrderDetails;
+
 #########################################################################################################################################################

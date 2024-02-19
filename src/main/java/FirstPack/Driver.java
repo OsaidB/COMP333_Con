@@ -413,7 +413,7 @@ public class Driver {
     }
 
     public static void addEmployeeUser(int id, String password) throws SQLException {
-        String STR = String.format("INSERT INTO EmployeeUsers(eID, uPassword) VALUE (%d, '%s')", id, password);
+        String STR = String.format("INSERT INTO EmployeeUsers(eID, uPassword) VALUES (%d, '%s')", id, password);
         Statement STT = con.createStatement();
         STT.execute(STR);
     }
